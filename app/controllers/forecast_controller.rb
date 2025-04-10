@@ -2,7 +2,10 @@ class ForecastController < ApplicationController
   def index
   end
 
-  def full_forecast
+  def summary
+  end
+
+  def full
   end
 
   def text_only
