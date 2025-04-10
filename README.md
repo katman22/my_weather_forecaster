@@ -1,5 +1,7 @@
 # My Weather Forecaster
 
+Simple weather forecasting application. Using NOAA.gov public data and OpenWeatherMap free data.
+
 ##### Prerequisites
 
 The setup steps expect following tools installed on the system.
@@ -30,7 +32,7 @@ You can start the rails server using the command given below.
 bundle exec rails s
 ```
 
-And now you can visit the site with the URL http://localhost:3000
+And now you can visit the site with the URL http://localhost:3000/forecast/index
 
 ### First Version Layout Design
 ![layout_example.png](public/images/layout_example.png)
