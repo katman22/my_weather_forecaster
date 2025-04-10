@@ -17,7 +17,7 @@ module Noaa
         forecast = parse_response(forecast_response)
         current = current_forecast(forecast)
         high, low = high_low(forecast, current)
-        successful(current.merge("high" => high, "low" => low))
+        successful(current.merge("high" => high, "low" => low, "latitude" => latitude, "longitude" => longitude))
       end
       def current_forecast(forecast)
         forecast["properties"]["periods"].select { |rows| rows["number"] == 1 }.first

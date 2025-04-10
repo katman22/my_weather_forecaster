@@ -16,8 +16,19 @@
 
   <table class="forecast_btns_table">
     <tr>
-      <td><button type="button" class="btn btn-primary">Full Forecast</button></td>
-      <td><button type="button" class="btn btn-primary">Text Only Forecast</button></td>
+      <td>
+        <%= button_to "Full Forecast", "full",
+                      method: :get,
+                      params: {lat: summary["latitude"], long: summary["longitude"], location: location },
+                      data: { turbo: false },
+                      class: "btn btn-primary"
+        %></td>
+      <td> <%= button_to "text Only Forecast", "text_only",
+                         method: :get,
+                         params: {lat: summary["latitude"], long: summary["longitude"], location: location },
+                         data: { turbo: false },
+                         class: "btn btn-primary"
+      %></td>
     </tr>
   </table>
 </div>
