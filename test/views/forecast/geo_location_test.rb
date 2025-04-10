@@ -11,5 +11,4 @@ class GeoLocationTest < ActionView::TestCase
     render partial: "forecast/geo_location", locals: { locations: "No location found from uth", location: "uth", total: 2, erred: true }
     assert_includes rendered, "No location found from uth"
   end
-
 end
