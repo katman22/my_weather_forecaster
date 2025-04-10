@@ -30,7 +30,5 @@ module OpenCage
         end
       end
     end
-
   end
 end
-
