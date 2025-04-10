@@ -1,24 +1,29 @@
-# README
+# My Weather Forecaster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Prerequisites
 
-Things you may want to cover:
+The setup steps expect following tools installed on the system.
 
-* Ruby version
+- Github
+- Ruby [3.3.0](https://www.ruby-lang.org/en/news/2023/12/25/ruby-3-3-0-released/)
+- Rails [8.0.2](https://rubyonrails.org/2025/3/12/Rails-Version-8-0-2-has-been-released)
 
-* System dependencies
+##### 1. Check out the repository
 
-* Configuration
+```bash
+git clone git@github.com:organization/project-name.git
+```
 
-* Database creation
+##### 2. No Database needed
 
-* Database initialization
+##### 3. Start the Rails server
 
-* How to run the test suite
+You can start the rails server using the command given below.
 
-* Services (job queues, cache servers, search engines, etc.)
+```ruby
+bundle exec rails s
+```
 
-* Deployment instructions
+And now you can visit the site with the URL http://localhost:3000
 
-* ...
+
