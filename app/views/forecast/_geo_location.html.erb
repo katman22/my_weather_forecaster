@@ -18,8 +18,12 @@
             <td>
               <%= button_to "Forecast", "summary",
                             method: :post,
-                            params: {lat: location_hash["geometry"]["lat"], long: location_hash["geometry"]["lng"], location: location },
-                            form: {data: { turbo_frame: "summary_response"}},
+                            params: {
+                              lat: location_hash["geometry"]["lat"],
+                              long: location_hash["geometry"]["lng"],
+                              location: location
+                            },
+                            form: { data: { turbo_frame: "summary_response" } },
                             class: "btn btn-primary"
               %>
             </td>

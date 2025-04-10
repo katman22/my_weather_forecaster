@@ -25,7 +25,6 @@ class ForecastController < ApplicationController
     longitude = params[:long]
     location = params[:location]
     service_result = Noaa::Forecast::Summary.(latitude, longitude)
-    # TODO add call to NOAA
     @summary = service_result.value
 
     render partial: "forecast_summary", locals: { summary: @summary, location: location }

@@ -6,6 +6,7 @@ module Noaa
       attr_reader :latitude, :longitude
 
       BASE_NOAA_URL = "https://api.weather.gov/points/"
+
       def initialize(latitude, longitude)
         @latitude = latitude
         @longitude = longitude
@@ -19,13 +20,14 @@ module Noaa
         high, low = high_low(forecast, current)
         successful(current.merge("high" => high, "low" => low, "latitude" => latitude, "longitude" => longitude))
       end
+
       def current_forecast(forecast)
         forecast["properties"]["periods"].select { |rows| rows["number"] == 1 }.first
       end
 
       def high_low(forecast, current)
         next_forecast = forecast["properties"]["periods"].select { |rows| rows["number"] == 2 }.first
-        current["isDaytime"] ? [ current["temperature"], next_forecast["temperature"] ] : [ next_forecast["temperature"], current["temperature"] ]
+        current["isDaytime"] ? [current["temperature"], next_forecast["temperature"]] : [next_forecast["temperature"], current["temperature"]]
       end
 
       def forecast_url(response)
@@ -37,8 +39,16 @@ module Noaa
       end
 
       def noaa_response
-        HTTParty.get(noaa_url, headers: noaa_agent_header)
+        lat_long = "#{latitude}#{longitude}".delete('-.')
+        cache_key = "noaa_#{lat_long}"
+        cached_response = Rails.cache.read(cache_key)
+        return cached_response if cached_response
+
+        response = HTTParty.get(noaa_url, headers: noaa_agent_header)
+        Rails.cache.write(cache_key, response, expires_in: 30.minutes)
+        response
       end
+
       def noaa_agent_header
         { "User-Agent" => "my_weather_forecaster (#{ENV['APPLICATION_EMAIL']})" }
       end
