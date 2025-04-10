@@ -12,7 +12,11 @@ The setup steps expect following tools installed on the system.
 
 ```bash
 git clone https://github.com/katman22/my_weather_forecaster.git
+```
+```bash
 git clone git@github.com:katman22/my_weather_forecaster.git
+```
+```bash
 gh repo clone katman22/my_weather_forecaster
 ```
 
