@@ -11,7 +11,9 @@ The setup steps expect following tools installed on the system.
 ##### 1. Check out the repository
 
 ```bash
-git clone git@github.com:organization/project-name.git
+git clone https://github.com/katman22/my_weather_forecaster.git
+git clone git@github.com:katman22/my_weather_forecaster.git
+gh repo clone katman22/my_weather_forecaster
 ```
 
 ##### 2. No Database needed
@@ -25,5 +27,8 @@ bundle exec rails s
 ```
 
 And now you can visit the site with the URL http://localhost:3000
+
+### First Version Layout Design
+![layout_example.png](public/images/layout_example.png)
 
 
