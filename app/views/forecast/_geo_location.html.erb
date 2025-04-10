@@ -21,7 +21,8 @@
                             params: {
                               lat: location_hash["geometry"]["lat"],
                               long: location_hash["geometry"]["lng"],
-                              location: location
+                              location: location,
+                              zip: location_hash["components"]["postcode"]
                             },
                             form: { data: { turbo_frame: "summary_response" } },
                             class: "btn btn-primary"

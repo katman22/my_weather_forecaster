@@ -3,13 +3,14 @@
 module Noaa
   module Forecast
     class Summary < ApplicationService
-      attr_reader :latitude, :longitude
+      attr_reader :latitude, :longitude, :zipcode
 
       BASE_NOAA_URL = "https://api.weather.gov/points/"
 
-      def initialize(latitude, longitude)
+      def initialize(latitude, longitude, zipcode)
         @latitude = latitude
         @longitude = longitude
+        @zipcode = zipcode
       end
 
       def call
@@ -27,7 +28,7 @@ module Noaa
 
       def high_low(forecast, current)
         next_forecast = forecast["properties"]["periods"].select { |rows| rows["number"] == 2 }.first
-        current["isDaytime"] ? [current["temperature"], next_forecast["temperature"]] : [next_forecast["temperature"], current["temperature"]]
+        current["isDaytime"] ? [ current["temperature"], next_forecast["temperature"] ] : [ next_forecast["temperature"], current["temperature"] ]
       end
 
       def forecast_url(response)
@@ -39,8 +40,7 @@ module Noaa
       end
 
       def noaa_response
-        lat_long = "#{latitude}#{longitude}".delete('-.')
-        cache_key = "noaa_#{lat_long}"
+        cache_key = "noaa_#{zipcode}"
         cached_response = Rails.cache.read(cache_key)
         return cached_response if cached_response
 
