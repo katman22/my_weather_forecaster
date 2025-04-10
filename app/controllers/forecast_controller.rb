@@ -5,13 +5,15 @@ class ForecastController < ApplicationController
   def geo_location
     @location = params[:location]
     location_service_result = OpenCage::GeoLocation::LocationFromInput.(@location)
-    if location_service_result.failure?
-      @summary = location_service_result.value
+    erred = location_service_result.failure?
+    if erred
+      results = location_service_result.value
+      total = 0
+    else
+      results = location_service_result.value[:results]
+      total = location_service_result.value[:total]
     end
-
-    results = location_service_result.value[:results]
-
-    render partial: "geo_location", locals: { summary: @summary, location: @location }
+    render partial: "geo_location", locals: { location: @location, locations: results, total: total, erred: erred }
   end
 
   def summary

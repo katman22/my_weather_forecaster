@@ -1,5 +1,10 @@
 <turbo-frame id="location_response">
 <div class="summary_div">
-  <p class="fs-6">Location Response: <%= summary %> from: <%= location %>, Total Locations: <%= total %></p>
+<% if erred %>
+    <p class="fs-6">Location Response: <%= locations %></p>
+  <% else %>
+    <p class="fs-6">Location Response: <%= locations %> from: <%= location %>, Total Locations: <%= total %></p>
+  <% end %>
+
 </div>
 </turbo-frame>
