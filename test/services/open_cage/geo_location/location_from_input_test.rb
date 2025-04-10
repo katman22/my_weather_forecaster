@@ -21,10 +21,10 @@ module OpenCage
       end
 
       test "Receive in-valid response from input" do
-        success_response = Minitest::Mock.new
-        success_response.expect :failure?, true
-        success_response.expect :value, "No locations found"
-        OpenCage::GeoLocation::LocationFromInput.stub :call, success_response do
+        failure_response = Minitest::Mock.new
+        failure_response.expect :failure?, true
+        failure_response.expect :value, "No locations found"
+        OpenCage::GeoLocation::LocationFromInput.stub :call, failure_response do
           result = OpenCage::GeoLocation::LocationFromInput.call("UT")
           assert result.failure?
         end
