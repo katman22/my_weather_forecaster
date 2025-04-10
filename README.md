@@ -24,7 +24,16 @@ gh repo clone katman22/my_weather_forecaster
 
 ##### 2. No Database needed
 
-##### 3. Start the Rails server
+##### 3. Create ENV file and add variables
+
+For NOAA user agent a valid email is needed. Key for this is APPLICATION_EMAIL, for the sake of this project my email can be used 'kameronwere@hotmail.com'. Any email could be used for this.
+For OpenCage Geolocation services you need to create a free account and add the generated key for the account to the env file under OPEN_CAGE_API_KEY. Again for the sake of this project we can use my current one 'b71ecc9f5ed64b33b193fd717846d4f5'
+
+```bash
+touch .env
+```
+
+##### 4. Start the Rails server
 
 You can start the rails server using the command given below.
 
@@ -48,6 +57,10 @@ Geocoding service of some type is needed to convert addresses I.E. city, state o
 Note: An account is needed to use free service.
 
 https://opencagedata.com/
+
+### Application Services
+
+Both API calls using HTTParty were extracted into a service PORO class. Services are used to create a pattern for further development utilizing external APIs and will also aid with code management and scalability.
 
 ### First Version Layout Design
 ![layout_example.png](public/images/layout_example.png)

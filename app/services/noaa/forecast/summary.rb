@@ -3,7 +3,6 @@
 module Noaa
   module Forecast
     class Summary < ApplicationService
-
       attr_reader :latitude, :longitude
 
       BASE_NOAA_URL = "https://api.weather.gov/points/"
@@ -21,12 +20,12 @@ module Noaa
         successful(current.merge("high" => high, "low" => low))
       end
       def current_forecast(forecast)
-        forecast["properties"]["periods"].select{|rows| rows["number"] == 1}.first
+        forecast["properties"]["periods"].select { |rows| rows["number"] == 1 }.first
       end
 
       def high_low(forecast, current)
-        next_forecast = forecast["properties"]["periods"].select{|rows| rows["number"] == 2}.first
-        current["isDaytime"] ? [current["temperature"], next_forecast["temperature"]] : [next_forecast["temperature"],current["temperature"]]
+        next_forecast = forecast["properties"]["periods"].select { |rows| rows["number"] == 2 }.first
+        current["isDaytime"] ? [ current["temperature"], next_forecast["temperature"] ] : [ next_forecast["temperature"], current["temperature"] ]
       end
 
       def forecast_url(response)
@@ -41,13 +40,12 @@ module Noaa
         HTTParty.get(noaa_url, headers: noaa_agent_header)
       end
       def noaa_agent_header
-        {"User-Agent" => "my_weather_forecaster (#{ENV['APPLICATION_EMAIL']})"}
+        { "User-Agent" => "my_weather_forecaster (#{ENV['APPLICATION_EMAIL']})" }
       end
 
       def noaa_url
         "#{BASE_NOAA_URL}#{latitude},#{longitude}"
       end
-
     end
   end
 end
