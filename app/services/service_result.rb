@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ServiceResult
   attr_reader :success, :value
   def initialize(success:, value:)
@@ -14,8 +15,6 @@ class ServiceResult
   end
 
   def to_h
-    {success: success, value: value}
+    { success: success, value: value }
   end
-
 end
-

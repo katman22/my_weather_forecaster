@@ -29,7 +29,7 @@ gem "bootsnap", require: false
 gem "httparty"
 # Need to read from environmental variables
 gem "dotenv-rails"
-gem 'pry', '~> 0.15.0'
+gem "pry", "~> 0.15.0"
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 

@@ -2,7 +2,6 @@
 
 module OpenCage
   module GeoLocation
-
     ## Class returns
     # from valid input
     # { results: parsed["results"], total: parsed["total_results"] }
@@ -10,7 +9,7 @@ module OpenCage
     class LocationFromInput < ApplicationService
       attr_reader :location
 
-      COUNTRY_CODE = 'US'
+      COUNTRY_CODE = "US"
 
       def initialize(location)
         @location = location
