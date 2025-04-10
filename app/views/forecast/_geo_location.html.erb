@@ -12,13 +12,13 @@
         </tr>
         </thead>
         <tbody>
-        <% locations.each do |location| %>
+        <% locations.each do |location_hash| %>
           <tr>
-            <td><p class="fs-8 geo_formatted"><%= location["formatted"] %></p></td>
+            <td><p class="fs-8 geo_formatted"><%= location_hash["formatted"] %></p></td>
             <td>
               <%= button_to "Forecast", "summary",
                             method: :post,
-                            params: {lat: location["geometry"]["lat"], long: location["geometry"]["lng"] },
+                            params: {lat: location_hash["geometry"]["lat"], long: location_hash["geometry"]["lng"], location: location },
                             form: {data: { turbo_frame: "summary_response"}},
                             class: "btn btn-primary"
               %>

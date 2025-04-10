@@ -32,14 +32,6 @@ module OpenCage
         { locations: parsed["results"], total: parsed["total_results"] }
       end
 
-      def failed(message)
-        ServiceResult.new(success: false, value: message)
-      end
-
-      def successful(value)
-        ServiceResult.new(success: true, value: value)
-      end
-
       def open_cage_api_response
         HTTParty.get("https://api.opencagedata.com/geocode/v1/json", {
           query: {

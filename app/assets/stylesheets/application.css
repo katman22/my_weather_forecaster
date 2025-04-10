@@ -49,8 +49,18 @@
     padding: 20px;
 }
 .summary_table{
+    max-width: 600px;
+    min-width: 550px;
     background-color: rgb(11, 94, 215);
-    padding: 20px;
+    padding: 10px;
+    color: white;
+}
+.forecast_btns_table{
+    max-width: 300px;
+    min-width: 300px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
     color: white;
 }
 .summary_table td{

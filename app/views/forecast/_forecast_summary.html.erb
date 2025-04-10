@@ -1,11 +1,23 @@
 <turbo-frame id="summary_response">
 <div class="summary_div">
-  <p class="fs-6"><%= location %><%= summary %></p>
+  <p class="fs-6">Summary of Current Weather for: <%= location %></p>
   <table class="summary_table">
     <tr>
-      <td>Current temp will show here</td>
-      <td>High / Low will show here</td>
-      <td>MPH winds will show here</td>
+      <td><%= image_tag(summary["icon"]) %></td>
+      <td><p class="fs-3"><%= sprintf("%.0f", summary["high"]) %>&deg; <%= summary["temperatureUnit"] %> / <%= sprintf("%.0f", summary["low"]) %>&deg;<%= summary["temperatureUnit"] %></p></td>
+      <td><p class="fs-3"><%= summary["windSpeed"] %> <%= summary["windDirection"] %></p></td>
+    </tr>
+    <tr>
+      <td><%= summary["shortForecast"] %></td>
+      <td>High / Low:</td>
+      <td>Wind MPH:</td>
+    </tr>
+  </table>
+
+  <table class="forecast_btns_table">
+    <tr>
+      <td><button type="button" class="btn btn-primary">Full Forecast</button></td>
+      <td><button type="button" class="btn btn-primary">Text Only Forecast</button></td>
     </tr>
   </table>
 </div>
