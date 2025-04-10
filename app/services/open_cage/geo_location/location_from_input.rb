@@ -29,7 +29,7 @@ module OpenCage
 
       def parse_response(response)
         parsed = response.parsed_response
-        { results: parsed["results"], total: parsed["total_results"] }
+        { locations: parsed["results"], total: parsed["total_results"] }
       end
 
       def failed(message)

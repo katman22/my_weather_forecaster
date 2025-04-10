@@ -7,13 +7,16 @@ class ForecastController < ApplicationController
     location_service_result = OpenCage::GeoLocation::LocationFromInput.(@location)
     erred = location_service_result.failure?
     if erred
-      results = location_service_result.value
+      locations = location_service_result.value
       total = 0
     else
-      results = location_service_result.value[:results]
+      locations = location_service_result.value[:locations]
       total = location_service_result.value[:total]
     end
-    render partial: "geo_location", locals: { location: @location, locations: results, total: total, erred: erred }
+    render turbo_stream: [
+      turbo_stream.replace("summary_response", partial: "clear"),
+      turbo_stream.replace("location_response", partial: "geo_location", locals: { location: @location, locations: locations, total: total, erred: erred })
+    ]
   end
 
   def summary

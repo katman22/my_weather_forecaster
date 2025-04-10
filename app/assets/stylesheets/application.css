@@ -36,6 +36,10 @@
     border-radius: 8px;
 }
 
+.geo_formatted{
+    margin-top: 10px;
+}
+
 .summary_div{
     max-width: 600px;
     min-width: 450px;
