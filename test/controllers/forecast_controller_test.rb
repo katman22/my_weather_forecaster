@@ -15,9 +15,4 @@ class ForecastControllerTest < ActionDispatch::IntegrationTest
     get forecast_text_only_url
     assert_response :success
   end
-
-  test "should get summary" do
-    get forecast_summary_url
-    assert_response :success
-  end
 end

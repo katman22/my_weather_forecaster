@@ -25,7 +25,11 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+# HTTParty to enable calls to APIs
+gem "httparty"
+# Need to read from environmental variables
+gem "dotenv-rails"
+gem 'pry', '~> 0.15.0'
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 
