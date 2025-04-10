@@ -4,7 +4,7 @@ Simple weather forecasting application. Using NOAA.gov public data and OpenWeath
 
 ##### Prerequisites
 
-The setup steps expect following tools installed on the system.
+The setup steps expect following tools are installed on the system.
 
 - Github
 - Ruby [3.3.0](https://www.ruby-lang.org/en/news/2023/12/25/ruby-3-3-0-released/)
