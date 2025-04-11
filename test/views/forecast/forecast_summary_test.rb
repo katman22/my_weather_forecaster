@@ -12,9 +12,10 @@ class ForecastSummaryTest < ActionView::TestCase
                "windDirection"=>"NW",
                "icon"=>"https://api.weather.gov/icons/land/day/few?size=medium",
                "shortForecast"=>"Sunny",
+                "zip"=> 89076,
                "high"=>70,
                "low"=>38 }
-    render partial: "forecast/forecast_summary", locals: { summary: summary, location: @location }
+    render partial: "forecast/forecast_summary", locals: { summary: summary, location: @location, zip: 78954, location_name: "This is the name" }
     assert_includes rendered, "15 to 20 mph"
   end
 end
