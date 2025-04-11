@@ -23,9 +23,14 @@ class ForecastController < ApplicationController
   def summary
     set_defaults
     service_result = Noaa::Forecast::Summary.(@latitude, @longitude, @zip)
+    if service_result.failure?
+      @erred = true
+      @summary = service_result.value
+    else
+      @summary = service_result.value
+    end
     @summary = service_result.value
-
-    render partial: "forecast_summary", locals: { summary: @summary, location: @location, zip: @zip, location_name: @location_name }
+    render partial: "forecast_summary", locals: { summary: @summary, location: @location, zip: @zip, location_name: @location_name, erred: @erred }
   end
 
   def full

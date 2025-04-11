@@ -19,12 +19,13 @@ module Noaa
       end
 
       def forecast_response(response)
+        return nil if response.nil? || response["status"] == 404
         HTTParty.get(forecast_url(response), headers: noaa_agent_header)
       end
 
       def high_low(forecast, current)
         next_forecast = forecast["properties"]["periods"].select { |rows| rows["number"] == 2 }.first
-        current["isDaytime"] ? [ current["temperature"], next_forecast["temperature"] ] : [ next_forecast["temperature"], current["temperature"] ]
+        current["isDaytime"] ? [current["temperature"], next_forecast["temperature"]] : [next_forecast["temperature"], current["temperature"]]
       end
 
       def forecast_url(response)
@@ -32,7 +33,7 @@ module Noaa
       end
 
       def parse_response(response)
-        return nil if response.empty?
+        return nil if response.nil? || response["status"] == 404
         JSON.parse(response)
       end
 

@@ -1,6 +1,6 @@
 # My Weather Forecaster
 
-Simple weather forecasting application. Using NOAA.gov public data and OpenWeatherMap free data.
+Simple weather forecasting application. Using NOAA.gov public data and OpenCage GeoLocation free data.
 
 ##### Prerequisites
 
@@ -27,7 +27,9 @@ gh repo clone katman22/my_weather_forecaster
 ##### 3. Create ENV file and add variables
 
 For NOAA user agent a valid email is needed. Key for this is APPLICATION_EMAIL, for the sake of this project my email can be used 'kameronwere@hotmail.com'. Any email could be used for this.
-For OpenCage Geolocation services you need to create a free account and add the generated key for the account to the env file under OPEN_CAGE_API_KEY. Again for the sake of this project we can use my current one 'b71ecc9f5ed64b33b193fd717846d4f5'
+For OpenCage Geolocation services you need to create a free account and add the generated key for the account to the env file under OPEN_CAGE_API_KEY. Again for the sake of this project we can use my current one 'b71ecc9f5ed64b33b193fd717846d4f5'. 
+NOTE: For Open Cage geolocation api COUNTRY_CODE is needed to scope search to US or desired country.
+Check .env_template for examples.
 
 ```bash
 touch .env

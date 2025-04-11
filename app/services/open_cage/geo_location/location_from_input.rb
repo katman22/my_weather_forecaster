@@ -9,7 +9,7 @@ module OpenCage
     class LocationFromInput < ApplicationService
       attr_reader :location
 
-      COUNTRY_CODE = "US"
+      COUNTRY_CODE = ENV["COUNTRY_CODE"]
 
       def initialize(location)
         @location = location
@@ -37,7 +37,8 @@ module OpenCage
           query: {
             q: location,
             key: ENV["OPEN_CAGE_API_KEY"],
-            countrycode: COUNTRY_CODE
+            countrycode: COUNTRY_CODE,
+            no_annotations: 1
           }
         })
       end
