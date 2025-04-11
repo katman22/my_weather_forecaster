@@ -1,7 +1,8 @@
 <div class="weather_div">
   <p class="text-left fs-4">Full Forecast for:<br/><%= @location_name %></p></p>
   <figcaption class="blockquote-footer text-left">
-    Data supplied by <cite title="Source Title">NOAA.gov</cite>
+    Forecast Data supplied by <cite title="Source Title">NOAA.gov</cite>,
+    GeoLocation Data supplied by <cite title="Source Title">OpenCage</cite>
     <br/>Full Local forecast : <a href="javascript:window.history.back();">Back to Summary</a>
   </figcaption>
   <% if @erred %>
@@ -13,7 +14,7 @@
         <% @forecasts.each do |forecast| %>
         <td>
           <p><small>
-          <%= image_tag(forecast["icon"], title: forecast["shortForecast"]) %><br/>
+          <%= image_tag(forecast["icon"], title: forecast["detailedForecast"]) %><br/>
             <b><%= forecast["name"] %></b><br/>
           </small></p>
         </td>
@@ -50,7 +51,8 @@
 </div>
 <div class="footer_tag">
   <figcaption class="blockquote-footer text-left">
-    Data supplied by <cite title="Source Title">NOAA.gov</cite>
+    Data supplied by <cite title="Source Title">NOAA.gov</cite>,
+    GeoLocation Data supplied by <cite title="Source Title">OpenCage</cite>
     <br/>Full Local forecast : <a href="javascript:window.history.back();">Back to Summary</a>
   </figcaption>
 </div>
