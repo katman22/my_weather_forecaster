@@ -1,0 +1,34 @@
+name: Run Minitest
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2  # Update this if needed
+          bundler-cache: true
+
+      - name: Set up Node and Yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+          bundle install --jobs 4 --retry 3
+
+      - name: Run Minitest
+        run: bundle exec rails test
