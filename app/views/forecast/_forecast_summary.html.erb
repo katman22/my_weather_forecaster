@@ -25,13 +25,13 @@
       <td>
         <%= button_to "Full Forecast", "full",
                       method: :get,
-                      params: {lat: summary["latitude"], long: summary["longitude"], location: location },
+                      params: {lat: summary["latitude"], long: summary["longitude"], location: location, zip: zip, location_name: location_name },
                       data: { turbo: false },
                       class: "btn btn-primary"
         %></td>
       <td> <%= button_to "text Only Forecast", "text_only",
                          method: :get,
-                         params: {lat: summary["latitude"], long: summary["longitude"], location: location },
+                         params: {lat: summary["latitude"], long: summary["longitude"], location: location, zip: zip, location_name: location_name },
                          data: { turbo: false },
                          class: "btn btn-primary"
       %></td>

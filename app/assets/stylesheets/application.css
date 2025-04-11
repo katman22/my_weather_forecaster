@@ -9,7 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-.forecast_form{
+.forecast_form {
     max-width: 600px;
     min-width: 450px;
     border-radius: 10px;
@@ -17,30 +17,37 @@
     margin: 0 auto;
     padding: 20px;
 }
-.weather_input{
+
+.weather_input {
     width: 450px;
     padding: 8px;
     border-radius: 8px;
 }
-.weather_div{
-    padding: 20px;
-}
-.text-left{
+
+.text-left {
     padding-left: 50px;
     padding-bottom: 10px;
 }
-.weather_div{
+
+.weather_div {
     padding: 20px;
     min-width: 500px;
     max-width: 700px;
     border-radius: 8px;
 }
 
-.geo_formatted{
+.geo_formatted {
     margin-top: 10px;
 }
 
-.summary_div{
+.text_only{
+    margin-left: 30px;
+}
+.table_aliceblue{
+    background-color: aliceblue;
+}
+
+.summary_div {
     max-width: 600px;
     min-width: 450px;
     border-radius: 10px;
@@ -48,14 +55,16 @@
     margin: 30px auto;
     padding: 20px;
 }
-.summary_table{
+
+.summary_table {
     max-width: 600px;
     min-width: 550px;
     background-color: rgb(11, 94, 215);
     padding: 10px;
     color: white;
 }
-.forecast_btns_table{
+
+.forecast_btns_table {
     max-width: 300px;
     min-width: 300px;
     margin-top: 20px;
@@ -63,6 +72,7 @@
     padding: 10px;
     color: white;
 }
-.summary_table td{
+
+.summary_table td {
     padding: 20px;
 }

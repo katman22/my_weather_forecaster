@@ -1,7 +1,22 @@
 <div class="weather_div">
-  <p class="text-left fs-2">Text Only Forecast</p>
+  <p class="text-left fs-4">Text Only Forecast for:<br/><%= @location_name %></p>
   <figcaption class="blockquote-footer text-left">
     Data supplied by <cite title="Source Title">NOAA.gov</cite>
     <br/>Text Only : <a href="javascript:window.history.back();">Back to Summary</a>
   </figcaption>
+  <% if @erred %>
+    <p class="fs-6">Error Response: <%= @message %></p>
+  <% else %>
+    <table class="table  text_only">
+      <% @forecasts.each do |forecast| %>
+        <tr>
+          <td><i><%= forecast["name"] %>:</i></td>
+        </tr>
+        <tr>
+          <td><%= forecast["detailedForecast"] %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
 </div>

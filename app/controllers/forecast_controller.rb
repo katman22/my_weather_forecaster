@@ -21,19 +21,41 @@ class ForecastController < ApplicationController
   end
 
   def summary
-    latitude = params[:lat]
-    longitude = params[:long]
-    location = params[:location]
-    zip = params[:zip]
-    service_result = Noaa::Forecast::Summary.(latitude, longitude, zip)
+    set_defaults
+    service_result = Noaa::Forecast::Summary.(@latitude, @longitude, @zip)
     @summary = service_result.value
 
-    render partial: "forecast_summary", locals: { summary: @summary, location: location }
+    render partial: "forecast_summary", locals: { summary: @summary, location: @location, zip: @zip, location_name: @location_name }
   end
 
   def full
+    set_defaults
+    create_forecasts
   end
 
   def text_only
+    set_defaults
+    create_forecasts
+  end
+
+  private
+
+  def create_forecasts
+    service_result = Noaa::Forecast::TextOnly.(@latitude, @longitude, @zip)
+    if service_result.success?
+      @forecasts = service_result.value["forecasts"]
+    else
+      @erred = true
+      @message = service_result.value
+    end
+  end
+
+  def set_defaults
+    @latitude = params[:lat]
+    @longitude = params[:long]
+    @location = params[:location]
+    @location_name = params[:location_name]
+    @zip = params[:zip]
+    @erred = false
   end
 end

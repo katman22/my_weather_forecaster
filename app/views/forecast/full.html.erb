@@ -1,8 +1,29 @@
 <div class="weather_div">
-  <p class="text-left fs-2">Full Forecast </p>
+  <p class="text-left fs-4">Full Forecast for:<br/><%= @location_name %></p></p>
   <figcaption class="blockquote-footer text-left">
     Data supplied by <cite title="Source Title">NOAA.gov</cite>
     <br/>Full Local forecast : <a href="javascript:window.history.back();">Back to Summary</a>
   </figcaption>
-
+  <% if @erred %>
+    <p class="fs-6">Error Response: <%= @message %></p>
+  <% else %>
+    <table class="table  text_only table_aliceblue">
+      <% @forecasts.each do |forecast| %>
+        <% precipitation = forecast["probabilityOfPrecipitation"] %>
+        <tr>
+          <td colspan=2><i><%= forecast["name"] %>:</i></td>
+        </tr>
+        <tr>
+          <th  rowspan="2"><%= image_tag(forecast["icon"]) %></th>
+          <td><p><small>
+            <b>InBrief:</b> <%= forecast["shortForecast"] %>, <b>temp:</b> <%= forecast["temperature"] %>&deg; <%= forecast["temperatureUnit"] %>, <b>wind direction:</b> <%= forecast["windDirection"] %>,<br/>
+            <b>wind speed:</b> <%= forecast["windSpeed"] %> <b>Chance of precipitation: </b><%= precipitation["value"] || 0 %>%
+          </small></p></td>
+        </tr>
+        <tr>
+          <td><p><small><%= forecast["detailedForecast"] %></small></p></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
