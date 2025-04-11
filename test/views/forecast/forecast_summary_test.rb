@@ -15,7 +15,7 @@ class ForecastSummaryTest < ActionView::TestCase
                 "zip"=> 89076,
                "high"=>70,
                "low"=>38 }
-    render partial: "forecast/forecast_summary", locals: { summary: summary, location: @location, zip: 78954, location_name: "This is the name" }
+    render partial: "forecast/forecast_summary", locals: { summary: summary, location: @location, zip: 78954, location_name: "This is the name", erred: false }
     assert_includes rendered, "15 to 20 mph"
   end
 end
