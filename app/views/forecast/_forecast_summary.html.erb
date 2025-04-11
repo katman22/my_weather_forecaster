@@ -1,6 +1,6 @@
 <turbo-frame id="summary_response">
   <div class="summary_div">
-    <p class="fs-6">Summary of Current Weather for: <%= location %></p>
+    <p class="fs-6">Summary of Current Weather for: <%= location_name %></p>
 
     <table class="summary_table">
       <% if summary["from_cache"] %>
@@ -14,7 +14,7 @@
         </tr>
       <% else %>
         <tr>
-          <td><%= image_tag(summary["icon"]) %></td>
+          <td><%= image_tag(summary["icon"], title: summary["shortForecast"]) %></td>
           <td><p class="fs-3"><%= sprintf("%.0f", summary["high"]) %>&deg; <%= summary["temperatureUnit"] %>
             / <%= sprintf("%.0f", summary["low"]) %>&deg;<%= summary["temperatureUnit"] %></p></td>
           <td><p class="fs-3"><%= summary["windSpeed"] %> <%= summary["windDirection"] %></p></td>

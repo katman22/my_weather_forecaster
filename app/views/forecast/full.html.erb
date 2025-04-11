@@ -7,14 +7,33 @@
   <% if @erred %>
     <p class="fs-6">Error Response: <%= @message %></p>
   <% else %>
-    <table class="table  text_only table_aliceblue">
+    <div class="table_daily_container">
+    <table class="table_daily table" >
+      <tr>
+        <% @forecasts.each do |forecast| %>
+        <td>
+          <p><small>
+          <%= image_tag(forecast["icon"], title: forecast["shortForecast"]) %><br/>
+            <b><%= forecast["name"] %></b><br/>
+          </small></p>
+        </td>
+        <% end %>
+      </tr>
+    </table>
+    </div>
+
+    <% days = @forecasts.size %>
+    <p class="text-decoration-underline text_only"><i><%= days %> Day Forecast</i></p>
+    <div class="table_weekly_container">
+    <table class="table table_aliceblue">
+
       <% @forecasts.each do |forecast| %>
         <% precipitation = forecast["probabilityOfPrecipitation"] %>
-        <tr>
+        <tr class="table-primary">
           <td colspan=2><i><%= forecast["name"] %>:</i></td>
         </tr>
         <tr>
-          <th  rowspan="2"><%= image_tag(forecast["icon"]) %></th>
+          <th  rowspan="2"><%= image_tag(forecast["icon"], title: forecast["shortForecast"]) %></th>
           <td><p><small>
             <b>InBrief:</b> <%= forecast["shortForecast"] %>, <b>temp:</b> <%= forecast["temperature"] %>&deg; <%= forecast["temperatureUnit"] %>, <b>wind direction:</b> <%= forecast["windDirection"] %>,<br/>
             <b>wind speed:</b> <%= forecast["windSpeed"] %> <b>Chance of precipitation: </b><%= precipitation["value"] || 0 %>%
@@ -25,5 +44,13 @@
         </tr>
       <% end %>
     </table>
+    </div>
   <% end %>
+
+</div>
+<div class="footer_tag">
+  <figcaption class="blockquote-footer text-left">
+    Data supplied by <cite title="Source Title">NOAA.gov</cite>
+    <br/>Full Local forecast : <a href="javascript:window.history.back();">Back to Summary</a>
+  </figcaption>
 </div>
