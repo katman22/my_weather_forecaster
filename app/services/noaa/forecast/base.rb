@@ -38,7 +38,8 @@ module Noaa
       end
 
       def noaa_response
-        cache_key = "noaa_#{zipcode}"
+        lat_lng_key = "#{@latitude}#{@longitude}".delete(".-")
+        cache_key = "noaa_#{lat_lng_key}"
         cached_response = Rails.cache.read(cache_key)
 
         if cached_response
